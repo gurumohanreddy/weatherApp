@@ -11,11 +11,11 @@ myApp.controller('maincontroller',['$scope','$location','inputservice',function(
 
 
 
-myApp.controller('secondcontroller',['$scope','$resource','$routeParams','inputservice',function($scope,$resource,$routeParams,inputservice){
+myApp.controller('secondcontroller',['$scope','$routeParams','inputservice','weatherservice',function($scope,$routeParams,inputservice,weatherservice){
         $scope.name = inputservice.name;
         $scope.days = $routeParams.days || '2';
-        $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily",{callback:'JSON_CALLBACK'},{get:{method:'JSONP'}});
-        $scope.weatherresult = $scope.weatherAPI.get({ q: $scope.name,cnt: $scope.days,appid: '2de143494c0b295cca9337e1e96b00e0'});
+
+        $scope.weatherresult = weatherservice.GetWeather($scope.name,$scope.days);
         // console.log($scope.weatherresult);
         $scope.convertToCelcius = function(degk){
             return Math.round((degk-273.15));
