@@ -11,14 +11,8 @@
 <div ng-repeat="w in weatherresult.list">
   <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">{{convertTODate(w.dt) | date: 'MMM d,y' }}</h3>
-          </div>
-          <div class="panel-body">
-            Daytime Temperature: {{convertToCelcius(w.temp.day)}}(c)
-          </div>
-        </div>
+            <search-results weather-day="w" convert-to-date="convertToDate(dt)" convert-to-celcius="convertToCelcius(daytimetemp)" date-format="MMMM d,y"></search-results>
+
     </div>
   </div>
 

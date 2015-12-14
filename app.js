@@ -21,6 +21,21 @@ myApp.service('inputservice',function(){
       this.name = 'Hyderabad,Telangana';
 });
 
+myApp.directive('searchResults',function(){
+    return{
+      replace: true,
+      restrict: 'E',
+      templateUrl:'directives/searchresults.html',
+      scope:{
+          weatherDay: '=',
+          convertToDate: '&',
+          convertToCelcius: '&',
+          dateFormat: '@'
+      }
+
+    }
+});
+
 
 myApp.controller('maincontroller',['$scope','inputservice',function($scope,inputservice){
         $scope.name = inputservice.name;
@@ -29,6 +44,9 @@ myApp.controller('maincontroller',['$scope','inputservice',function($scope,input
         });
 
 }]);
+
+
+
 myApp.controller('secondcontroller',['$scope','$resource','$routeParams','inputservice',function($scope,$resource,$routeParams,inputservice){
         $scope.name = inputservice.name;
         $scope.days = $routeParams.days || '2';
@@ -39,7 +57,7 @@ myApp.controller('secondcontroller',['$scope','$resource','$routeParams','inputs
             return Math.round((degk-273.15));
         };
 
-        $scope.convertTODate = function(dt){
+        $scope.convertToDate = function(dt){
 
             return new Date(dt*1000);
         };
