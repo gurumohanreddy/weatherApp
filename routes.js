@@ -1,0 +1,15 @@
+myApp.config(function($routeProvider){
+    $routeProvider
+    .when('/',{
+        templateUrl:'./pages/home.html',
+        controller:'maincontroller'
+    })
+    .when('/forecast',{
+        templateUrl:'./pages/forecast.html',
+        controller:'secondcontroller'
+    })
+    .when('/forecast/:days',{
+        templateUrl:'./pages/forecast.html',
+        controller:'secondcontroller'
+    })
+});
