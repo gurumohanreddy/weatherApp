@@ -1,8 +1,11 @@
-myApp.controller('maincontroller',['$scope','inputservice',function($scope,inputservice){
+myApp.controller('maincontroller',['$scope','$location','inputservice',function($scope,$location,inputservice){
         $scope.name = inputservice.name;
         $scope.$watch('name',function(){
             inputservice.name = $scope.name;
         });
+        $scope.submit = function(){
+            $location.path('/forecast');
+        }
 
 }]);
 
